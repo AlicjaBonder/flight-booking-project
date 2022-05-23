@@ -122,11 +122,8 @@ export class SeatBookingComponent implements OnInit {
       this.AdultPassengersList[foundIndex].showChoosenSeat =  true;
       this.showForm = true;
       this.showSeats = true;
-      // let check=this.AdultPassengersList.find(x=>x.seatRow=="" && x.seatColumn == "")
-      // console.log(check);
       if(this.AdultPassengersList.find(x=>x.seatRow=="" && x.seatColumn == "") === undefined){
           this.summaryButtonShow=true;
-          window.scroll(0,0);
       }
       }else{
         this.selectedColumn.setErrors({ 'notAvailable': true });

@@ -26,10 +26,17 @@
           <strong>Wrong credentials</strong>
         </div>
       </div>
-        <div class="submit-buttons">
+        <div *ngIf="isMainPageLogIn===false" class="submit-buttons">
           <button (click)="onSubmit()" type="submit">
             <strong>SIGN IN</strong>
           </button>
+          <button mat-dialog-close><strong>CLOSE</strong></button>
+        </div>
+        <div *ngIf="isMainPageLogIn===true">
+          <strong>You're log in!</strong>
+          <br>
+          <strong>Click close button</strong>
+          <br>
           <button mat-dialog-close><strong>CLOSE</strong></button>
         </div>
       </form>

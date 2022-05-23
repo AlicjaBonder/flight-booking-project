@@ -171,7 +171,7 @@
     </div>
   <div class="right-side">
     <mat-card class="right-side-card">
-      <div class="summary-wrapper"><h1 class="summary"><strong>SUMMARY</strong></h1></div>
+      <div id="summary-wrapper"><h1 class="summary"><strong>SUMMARY</strong></h1></div>
       <h3><strong>DEPARTURE:</strong> {{ flight }} {{time}} {{ departure }}</h3>
       <h3><strong>ARRIVAL:</strong> {{ flight }} {{arrivalTime}} {{ arrival }}</h3>
       <h3><strong>Passengers: </strong><span *ngIf="adultPassengers==1">{{ adultPassengers }} Adult </span><span *ngIf="adultPassengers>1">{{ adultPassengers }} Adults</span><span *ngIf="childPassengers==1"> and {{ childPassengers }} Child </span> <span *ngIf="childPassengers>1"> and {{ childPassengers }} Childs </span><span *ngIf="infantPassengers==1"> and {{ infantPassengers }} Infant</span><span *ngIf="infantPassengers>1"> and {{ infantPassengers }} Infants</span></h3>

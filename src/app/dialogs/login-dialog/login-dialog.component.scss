@@ -4,6 +4,7 @@ mat-card {
 mat-form-field {
 	display: block;
 }
+button{cursor: pointer;}
 .submit-buttons {
 	display: flex;
 	flex-direction: column;
@@ -13,7 +14,7 @@ mat-form-field {
 		background-color: #d469a5;
 		color: white;
 		padding: 5px;
-		cursor: pointer;
+		
 	}
 }
 .alert {

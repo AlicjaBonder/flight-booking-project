@@ -61,11 +61,7 @@ export class NavbarComponent implements OnInit {
           let date = new Date(item.date);
           return date >= startDate && date <= endDate;
         });
-        // if(this.showResults.length > 10){
-        //   this.flights5Show = this.showResults.slice(0, 10);
-        // }else{
-        //   this.flights5Show = this.showResults;
-        // }
+
         this.departure = this.selectedDeparture.value;
         this.arrival = this.selectedArrival.value;
         if(this.choosenPassangers === 'Passengers'){

@@ -30,7 +30,7 @@ export class AppComponent {
     });
   }
   goToLogOut(){
-    sessionStorage.removeItem('isLoggedIn');
+    sessionStorage.clear();
     this.router.navigate(['/']);
   }
 }

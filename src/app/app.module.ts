@@ -37,7 +37,7 @@ import { MatButtonModule } from '@angular/material/button';
     CurrencyConverterComponent,
     AcceptDialogComponent,
     FinalPageComponent,
-    WarningDialogComponent
+    WarningDialogComponent,
   ],
   imports: [
     BrowserModule,
