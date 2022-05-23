@@ -1,0 +1,220 @@
+<div class="booking-content">
+  <div class="left-side">
+    <div class="left-side-title"><strong>PASSENGERS</strong></div>
+    <div *ngFor="let item of AdultPassengersList">
+    <div class="user-form" >
+      <mat-card>
+        <div class="passenger-information"><strong> {{item.id}} PASSENGER</strong>  
+          <div *ngIf="childPassengers>0"><section class="checkbox-section">
+          <mat-radio-group [(ngModel)]="labelPosition">
+            <mat-radio-button class="checkbox" value="Adult">ADULT</mat-radio-button>
+            <mat-radio-button class="checkbox" value="Child">CHILD</mat-radio-button>
+          </mat-radio-group>
+        </section>
+      </div>
+    </div>
+        <br>
+        <br>
+        <mat-card-content>
+          <form [formGroup]="form" (ngSubmit)="onSubmit(item)">
+            <h2>PLEASE ADD YOUR NAME</h2>
+            <mat-form-field>
+              <input
+                matInput
+                placeholder="name"
+                formControlName="name"
+                required
+              />
+              <mat-error>Enter your name</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <input
+                matInput
+                placeholder="surname"
+                formControlName="surname"
+                required
+              />
+              <mat-error>Enter your surname</mat-error>
+            </mat-form-field>
+            <div class="submit-button">
+              <button type="submit">
+                <strong>SUBMIT</strong>
+              </button>
+            </div>
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div class="baggage-content">
+      <div class="baggage-content-title"><h2>CHOOSE VARIANT OF YOUR BAGGAGE</h2></div>
+    <div class="mat-cards-baggage">
+    <mat-card class="baggage-card">
+      <mat-card-title-group>
+        <mat-card-title>CABIN BAGGAGE</mat-card-title>
+        <mat-card-subtitle>Bring 1 Small Bag that fits under seat </mat-card-subtitle>
+        <mat-card-subtitle>plus one 10kg Cabin Bag per person on board</mat-card-subtitle>
+        <mat-card-subtitle>NO ADDITIONALLY COST</mat-card-subtitle>
+        <img mat-card-sm-image src="assets/hand-baggage.png" >
+      </mat-card-title-group>
+      <mat-card-content>
+        <button class="button-baggage" (click)="noBaggage(item)">
+          <strong>CHOOSE</strong>
+        </button>
+      </mat-card-content>
+    </mat-card>
+    <mat-card class="baggage-card">
+      <mat-card-title-group>
+        <mat-card-title>CHECK-IN BAG</mat-card-title>
+        <mat-card-subtitle>119 x 119 x 81 cm</mat-card-subtitle>
+        <mat-card-subtitle>20 kg Check-in Bag</mat-card-subtitle>
+        <mat-card-subtitle>COST: 100 PLN per baggage*</mat-card-subtitle>
+        <mat-card-subtitle> <div class="baggaeValuePart"> <button (click)="minusOne()">-</button><span>{{baggageValue}}</span><button (click)="addOne()">+</button></div>
+        </mat-card-subtitle>
+        <mat-card-subtitle>*max 3 per person</mat-card-subtitle>
+
+        <img mat-card-sm-image src="assets/regular-baggage.png" >
+      </mat-card-title-group>
+      <mat-card-content>
+        <button class="button-baggage" (click)="checkInBaggage(item)">
+          <strong>CHOOSE</strong>
+        </button>
+      </mat-card-content>
+    </mat-card>
+    </div>
+  </div>
+
+    <div class="chooseSeats">
+      <div class="chooseSeats-title">
+        <h2><strong>CHOOSE YOUR SEAT</strong></h2>
+      </div>
+      <div class="choose-seat-select">
+      <div class="image">
+        <label>
+          <input type="checkbox">
+            <img id="myImage" src="assets/LOT_Polish_Airlines_Embraer_ERJ-175.svg"/>
+        </label>
+      </div>
+      
+      <div class="row-seat">
+        <mat-form-field apperance="outline">
+          <mat-label>ROW</mat-label>
+          <mat-select [formControl]="selectedRow" required>
+            <mat-select-trigger>
+              {{ selectedRow.value ? selectedRow.value : "" }}
+            </mat-select-trigger>
+            <mat-option *ngFor="let row of rows" [value]="row">{{
+              row
+            }}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="selectedRow.hasError('required')"
+            >Please choose a row</mat-error
+          >
+        </mat-form-field>
+      </div>
+      <div class="column-seat">
+        <mat-form-field apperance="outline">
+          <mat-label>SEAT</mat-label>
+          <mat-select [formControl]="selectedColumn" required>
+            <mat-option *ngFor="let column of columns" [value]="column">{{
+              column
+            }}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="selectedColumn.hasError('required')"
+            >Please choose a seat</mat-error
+          >
+          <mat-error *ngIf="selectedColumn.hasError('notAvailable')"
+          >Please choose diffrent seat</mat-error
+        >
+        </mat-form-field>
+      </div>
+      <div class="submit-button">
+        <button (click)="chooseSeats(item)"><strong>SUBMIT</strong></button>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngFor="let item of InfantsList">
+    <div class="user-form" >
+	  <mat-card>
+    <div class="passenger-information"><strong> {{item.id}} PASSENGER INFANT</strong></div>
+        <mat-card-content>
+          <form [formGroup]="formInfant" (ngSubmit)="onSubmitInfant(item)">
+            <h2>PLEASE ADD YOUR NAME</h2>
+            <mat-form-field>
+              <input
+                matInput
+                placeholder="name"
+                formControlName="name"
+                required
+              />
+              <mat-error>Enter your name</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <input
+                matInput
+                placeholder="surname"
+                formControlName="surname"
+                required
+              />
+              <mat-error>Enter your surname</mat-error>
+            </mat-form-field>
+            <div class="submit-button">
+              <button type="submit">
+                <strong>SUBMIT</strong>
+              </button>
+            </div>
+          </form>
+        </mat-card-content>
+	</mat-card>
+   </div>
+   </div>
+    </div>
+  <div class="right-side">
+    <mat-card class="right-side-card">
+      <div class="summary-wrapper"><h1 class="summary"><strong>SUMMARY</strong></h1></div>
+      <h3><strong>DEPARTURE:</strong> {{ flight }} {{time}} {{ departure }}</h3>
+      <h3><strong>ARRIVAL:</strong> {{ flight }} {{arrivalTime}} {{ arrival }}</h3>
+      <h3><strong>Passengers: </strong><span *ngIf="adultPassengers==1">{{ adultPassengers }} Adult </span><span *ngIf="adultPassengers>1">{{ adultPassengers }} Adults</span><span *ngIf="childPassengers==1"> and {{ childPassengers }} Child </span> <span *ngIf="childPassengers>1"> and {{ childPassengers }} Childs </span><span *ngIf="infantPassengers==1"> and {{ infantPassengers }} Infant</span><span *ngIf="infantPassengers>1"> and {{ infantPassengers }} Infants</span></h3>
+      <h3><strong>Ticket Price: </strong>{{price * adultPassengers + price*childPassengers | number : '1.2-2'}} PLN</h3>
+      <div *ngFor="let passenger of AdultPassengersList">
+        <div class="passenger-details" *ngIf="passenger.showDataFromForm === true">
+          <div>
+              <strong>1 {{passenger.adult}} {{ passenger.name }} {{ passenger.surname }}</strong>
+          </div>
+          <div *ngIf="passenger.noBaggageInfo === true && passenger.showBaggageInfo === false && passenger.freeBag===true" >
+            <div>
+              <strong>CABIN BAGGAGE NO ADDITIONAL COST</strong>
+            </div>
+          </div>
+          <div *ngIf="passenger.noBaggageInfo === false && passenger.showBaggageInfo === true  && passenger.freeBag===false">
+            <div>
+              <strong>{{passenger.checkInBag}} CHECK-IN BAG COST {{passenger.checkInBag*100}} PLN</strong>
+            </div>
+          </div>
+          <div *ngIf="showSeats === true && passenger.showChoosenSeat===true">
+            <div>
+              <strong>SEAT: {{passenger.seatRow}} {{passenger.seatColumn}}</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+        <div *ngFor="let passenger of InfantsList">
+          <div class="passenger-details" *ngIf="passenger.showDataFromForm === true">
+            <div>
+                <strong>1 Infant {{ passenger.name }} {{ passenger.surname }}</strong>
+            </div>
+          </div>
+        </div>
+      <div class="total-price">
+        <strong>TOTAL PRICE: {{totalPrice | number : '1.2-2'}} {{currencySymbol}}</strong>
+        <div class="change-currency" (click)="changeCurrency()">change currency
+        </div>
+      </div>
+      <div class="summary" >
+        <button class="summary-button" [disabled]="summaryButtonShow==false" (click)="getAccept()">
+          <span [matTooltip]="summaryButtonShow ? '' : 'You must fill all fields to go further'"><strong>ACCEPT AND BUY</strong></span>
+          </button>
+      </div>
+     </mat-card>
+  </div> 
+</div>

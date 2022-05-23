@@ -1,0 +1,191 @@
+.left-side {
+	border: grey dotted 1px;
+	margin-top: 5px;
+	padding: 10px;
+}
+.left-side-title {
+	font-size: 24px;
+	color: white;
+	background-color: #6796b3;
+	padding: 10px 10px 10px 10px;
+}
+.baggage-content {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: column;
+	text-align: center;
+	border: grey dotted 1px;
+	margin-top: 5px;
+	padding: 10px;
+	height: auto;
+}
+.user-form {
+	border: grey dotted 1px;
+	margin-top: 5px;
+	padding: 10px;
+}
+.chooseSeats {
+	display: flex;
+	flex-flow: row wrap;
+	flex-direction: column;
+	text-align: center;
+	border: grey dotted 1px;
+	margin-top: 5px;
+	padding: 10px;
+	height: auto;
+	justify-content: baseline;
+}
+.choose-seat-select {
+	display: flex;
+	flex-direction: row;
+}
+.row-seat {
+	padding-right: 20px;
+}
+.column-seat {
+	padding-right: 20px;
+}
+.submit-button {
+	button {
+		color: white;
+		background-color: #fa75ad;
+		padding: 10px 40px 10px 40px;
+		margin-top: 10px;
+		border: none;
+		cursor: pointer;
+	}
+}
+.image {
+	height: 250px;
+	width: 250px;
+	position: relative;
+	z-index: 10;
+	input[type=checkbox] {
+		display: none;
+		&:checked~img {
+			transform: scale(6);
+			cursor: zoom-out;
+		}
+	}
+	img {
+		max-width: 100%;
+		max-height: 100%;
+		transition: transform 0.25s ease, -webkit-transform 0.25s;
+		cursor: zoom-in;
+	}
+}
+mat-card {
+	text-align: center;
+}
+mat-form-field {
+	margin-right: 10px;
+	margin-left: 10px;
+}
+.passenger-information {
+	float: left;
+	display: block;
+	display: flex;
+}
+.passenger-details {
+	display: flex;
+	flex-direction: column;
+	border: grey dotted 1px;
+	margin-top: 5px;
+	padding: 10px;
+}
+.booking-content {
+	display: flex;
+	flex-wrap: wrap;
+	margin: 30px 0px 50px 10px;
+}
+.mat-cards-baggage {
+	display: flex;
+	justify-content: space-around;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+@media only screen and (max-width: 991px) {
+	.user-form{
+	 display: flex;
+	 flex-flow: row wrap;
+	 justify-content:center;
+	}
+    .mat-cards-baggage{
+        flex-direction: column;
+		display: flex;
+		flex-flow: row wrap;
+    }
+	.choose-seat-select{
+		flex-direction: column;
+		justify-content: center;
+		justify-items: center;
+		flex-flow: column wrap;
+	}
+}
+.baggage-card {
+	margin-left: 10px;
+	margin-right: 10px;
+	flex-basis: 50%;
+}
+.button-baggage {
+	color: white;
+	background-color: #fa75ad;
+	padding: 10px 40px 10px 40px;
+	margin-bottom: 10px;
+	border: none;
+	cursor: pointer;
+}
+.baggaeValuePart {
+	button {
+		border: none;
+		margin: 5px;
+		cursor: pointer;
+	}
+}
+.right-side {
+	font-family: 'Lato';
+	margin-left: 10px;
+}
+.right-side-card {
+	background-color: #afd9f4;
+}
+.total-price {
+	font-size: 20px;
+	margin: 10px;
+}
+.change-currency {
+	font-size: 12px;
+	color: blue;
+	cursor: pointer;
+}
+.checkbox-section {
+	display: flex;
+	align-content: center;
+	align-items: center;
+	margin-left: 10px;
+}
+.checkbox {
+	margin-left: 10px;
+}
+.summary {
+	font-size: 24px;
+	color: white;
+	letter-spacing: 1px;
+}
+.summary-wrapper {
+	background-color:#6796b3;
+}
+.summary-button {
+	color: white;
+	background-color: #fa75ad;
+	padding: 10px 40px 10px 40px;
+	margin-bottom: 10px;
+	border: none;
+	cursor: pointer;
+}
+button {
+	&:disabled {
+		cursor: not-allowed;
+		pointer-events: all !important;
+	}
+}

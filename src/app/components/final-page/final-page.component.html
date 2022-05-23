@@ -1,0 +1,58 @@
+<div class="summary-body">
+    <div>
+    <mat-card class="summary-card">
+      <div class="title-wrapper">
+        <mat-card-title>PURCHASE SUMMARY</mat-card-title>
+      </div>
+        <mat-card-subtitle>Your ticket details</mat-card-subtitle>
+        <mat-card-content>
+            <span *ngIf=" flightDetails !== undefined && flightDetails.date !== undefined && flightDetails.time !== undefined && flightDetails.arriveTime !== undefined">
+            <h3><strong>DEPARTURE: {{ flightDetails.date }} {{flightDetails.time}} {{ departure }}</strong></h3>
+            <h3><strong>ARRIVAL: {{ flightDetails.date }} {{flightDetails.arriveTime}} {{ arrival }}</strong></h3>
+            </span>
+            <div *ngFor="let passenger of passengersList">
+              <div class="passenger-details">
+                <div>
+                    <strong>1 {{passenger.adult}} {{ passenger.name }} {{ passenger.surname }}</strong>
+                </div>
+                <div *ngIf="passenger.freeBag===true" >
+                  <div>
+                    <strong>CABIN BAGGAGE NO ADDITIONAL COST</strong>
+                  </div>
+                </div>
+                <div *ngIf="passenger.freeBag===false">
+                  <div>
+                    <strong>{{passenger.checkInBag}} CHECK-IN BAG COST </strong>
+                  </div>
+                </div>
+                  <div>
+                    <strong>SEAT: {{passenger.seatRow}} {{passenger.seatColumn}}</strong>
+                  </div>
+              </div>
+            </div>
+            <div *ngFor="let passenger of infantPassengersList">
+                <div class="passenger-details">
+                  <div>
+                      <strong>1 Infant {{ passenger.name }} {{ passenger.surname }}</strong>
+                  </div>
+                </div>
+              </div>
+            <div class="total-price">
+              <strong>SUMMARY PRICE: {{totalPrice | number : '1.2-2'}} {{currencySymbol}}</strong>
+              <div class="change-currency" (click)="changeCurrency()">change currency</div>
+            </div>
+        </mat-card-content>
+        <div class="button-wrapper">
+        <button class="back-button" (click)="goToMainPage()"><strong>GO TO MAIN PAGE</strong></button>
+        </div>
+    </mat-card>
+</div>
+<div *ngIf="showWeather==true"> 
+  <mat-card class="weather-part">
+    <h2>Current weather for</h2>
+    <h2>{{ arrival }}</h2>
+    <div><strong>{{temp|number:'1.0-0'}}<sup>o</sup>C</strong></div>
+    <div><strong>{{weatherDesc}}</strong></div>
+    </mat-card>
+  </div>
+</div>

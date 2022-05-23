@@ -1,0 +1,21 @@
+mat-card {
+	text-align: center;
+}
+mat-form-field {
+	display: block;
+}
+.submit-buttons {
+	display: flex;
+	flex-direction: column;
+	row-gap: 6px;
+	margin-top: 10px;
+	button {
+		background-color: #d469a5;
+		color: white;
+		padding: 5px;
+		cursor: pointer;
+	}
+}
+.alert {
+	color: red;
+}

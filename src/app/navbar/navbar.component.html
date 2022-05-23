@@ -1,0 +1,143 @@
+<div>
+  <div class="all-nav">
+    <div class="main-nav">
+    <div class="nav-title">
+      <h2><strong>SEARCH FLIGHT</strong></h2>
+    </div>
+    <div class="first-floor">
+      <div class="departure">
+        <mat-form-field apperance="outline">
+          <mat-label>Departure City</mat-label>
+          <mat-select [formControl]="selectedDeparture" required>
+            <mat-select-trigger>
+              {{ selectedDeparture.value ? selectedDeparture.value : "" }}
+            </mat-select-trigger>
+            <mat-option *ngFor="let city of departures" [value]="city">{{
+              city
+            }}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="selectedDeparture.hasError('required')"
+            >Please choose a city</mat-error
+          >
+        </mat-form-field>
+      </div>
+      <div class="arrival">
+        <mat-form-field apperance="outline">
+          <mat-label>Arrival City</mat-label>
+          <mat-select [formControl]="selectedArrival" required>
+            <mat-option *ngFor="let city of cities" [value]="city">{{
+              city
+            }}</mat-option>
+          </mat-select>
+          <mat-error *ngIf="selectedDeparture.hasError('required')"
+            >Please choose a city</mat-error
+          >
+        </mat-form-field>
+      </div>
+      <div class="passenger-quantity">
+        <span mat-icon-button [matMenuTriggerFor]="passengersMenu" class="passengers-label">
+          <div class="passenger-label" >{{choosenPassangers}}</div>
+          <div class="arrow-down"><mat-icon class="icon-display">keyboard_arrow_down</mat-icon></div>
+        </span>
+        <mat-menu #passengersMenu="matMenu">
+          <div mat-menu-item (click)="$event.stopPropagation()">
+          ADULT(14+) <button class="quantityButton"(click)="minusOneAdult()">-</button><span>{{adultQuantity}}</span><button class="quantityButton" (click)="addOneAdult()">+</button>
+          </div>
+          <div mat-menu-item (click)="$event.stopPropagation()">
+            CHILD(2-14) <button class="quantityButton" (click)="minusOneChild()">-</button><span>{{childQuantity}}</span><button class="quantityButton"(click)="addOneChild()">+</button>
+          </div>
+          <div mat-menu-item (click)="$event.stopPropagation()">
+            INFANT(0-2)<button class="quantityButton" (click)="minusOneInfant()">-</button><span>{{infantQuantity}}</span><button class="quantityButton" (click)="addOneInfant()">+</button>
+          </div>
+        
+        <div mat-menu-item><button class="quantityDoneButton"(click)="choosenPassengers()"><strong>DONE</strong></button></div>
+      </mat-menu>
+      </div>
+    </div>
+    <div class="first-floor-date-range">
+      <div class="dateField">
+        <mat-form-field appearance="fill">
+          <mat-label>Choose a start date</mat-label>
+          <input
+            matInput
+            [matDatepicker]="picker"
+            [min]="todayDate"
+            [formControl]="dateOfFlight"
+          />
+          <mat-datepicker-toggle matSuffix [for]="picker">
+            <mat-icon matDatepickerToggleIcon>calendar_today</mat-icon>
+          </mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div class="dateField">
+        <mat-form-field appearance="fill">
+          <mat-label>Choose an end date</mat-label>
+          <input
+            matInput
+            [matDatepicker]="picker2"
+            [min]="todayDate"
+            [formControl]="dateOfFlight2"
+            (dateChange)="comparisonEnddateValidator()"
+          />
+          <mat-datepicker-toggle matSuffix [for]="picker2">
+            <mat-icon matDatepickerToggleIcon>calendar_today</mat-icon>
+          </mat-datepicker-toggle>
+          <mat-datepicker #picker2></mat-datepicker>
+          <mat-error
+          *ngIf="dateOfFlight2.hasError('invaliddaterange')">
+          <strong>End date cannot be earlier than start date</strong>
+        </mat-error>
+    
+        </mat-form-field>
+      </div>
+    </div>
+    <div class="second-floor">
+      <button class="check-button" (click)="ckeckFlights()">
+        <strong>SEARCH</strong>
+      </button>
+    </div>
+  </div>
+  <div class="weather-part"><app-weather></app-weather></div>
+  </div>
+  <div class="results-cards">
+    <div *ngIf="showCustomerFlights === true" >
+      <div class="customer-flights">
+        <div *ngFor="let FlightDetails of showResults">
+          <mat-card class="example-card">
+            <mat-card-content>
+              <div class="content-flex">
+                <div class="departure-part">
+                  <div class="departure-date">{{ FlightDetails.date  | date: 'fullDate'  }}</div>
+                  <div class="time-format">{{ FlightDetails.time }} </div>
+                  <div class="departure-city">
+                    {{ departure }} 
+                  </div> 
+                </div>
+              <div class="plane-icon-image"><img src="assets/plane-icon.png"></div>
+              <div class="arrival-part">
+                <div class="arrival-date">{{ FlightDetails.date  | date: 'fullDate' }}</div>
+                <div class="time-format">{{ FlightDetails.arriveTime }}</div>
+                <div class="arrival-city">
+                  {{ arrival }} 
+                </div> 
+              </div>
+              <div class="card-content">
+                <div class="price">
+                  <strong>PRICE: {{FlightDetails.price}} PLN</strong>
+                </div>
+                <div class="card-content-seats"> 36 seats available</div>
+                <button
+                class="cta-button right"
+                (click)="goToLogin(FlightDetails)">
+                CHOOSE
+              </button>
+              </div>
+            </div>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

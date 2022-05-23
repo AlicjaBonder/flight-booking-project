@@ -1,0 +1,9 @@
+
+
+<div class="time"><strong>{{ rxTime | date:'mediumTime' }}</strong></div>
+<div class="time"><strong>{{date | date:'mediumDate'}}</strong></div>
+<div class="forecast">
+    <h2>Current weather for Wrocław</h2>
+<div>{{temp|number:'1.0-0'}}<sup>o</sup>C</div>
+<div>{{weatherDesc}}</div>
+</div>
