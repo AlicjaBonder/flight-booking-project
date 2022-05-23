@@ -124,6 +124,10 @@ export class SeatBookingComponent implements OnInit {
       this.showSeats = true;
       if(this.AdultPassengersList.find(x=>x.seatRow=="" && x.seatColumn == "") === undefined){
           this.summaryButtonShow=true;
+          let el = document.getElementById("summary-wrapper");
+          if(el){
+            el.scrollIntoView({behavior: 'smooth'});
+          } 
       }
       }else{
         this.selectedColumn.setErrors({ 'notAvailable': true });
